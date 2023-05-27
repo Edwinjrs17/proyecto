@@ -4,17 +4,30 @@
  */
 package GUI;
 
+import Logica.funcionario;
+import base_de_datos.conexion;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author edwin
  */
 public class JFrm_inicio extends javax.swing.JFrame {
 
+    conexion cx;
+    funcionario fc = new funcionario();
+
     /**
      * Creates new form JFrm_inicio
      */
     public JFrm_inicio() {
         initComponents();
+        cx = new conexion("proyecto_poo");
     }
 
     /**
@@ -172,15 +185,51 @@ public class JFrm_inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(RB_funcionario.isSelected()){
-        }else{
+        if (RB_funcionario.isSelected()) {
+            try {
+                
+                fc.setNombre(login_usuario.getText());
+                fc.setContraseña(String.valueOf(login_contraseña.getPassword()));
+                
+                String query = "SELECT * FROM `ingreso funcionarios` WHERE nombre='" + fc.getNombre() + "'AND contraseña='" + fc.getContraseña() + "'";
+
+                Statement st = cx.conectar().createStatement();
+                ResultSet rs = st.executeQuery(query);
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(null, "Bienvenido");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario No encontrado");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JFrm_inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            if (RB_paciente.isSelected()) {
+                try {
+                   fc.setNombre(login_usuario.getText());
+                   fc.setContraseña(String.valueOf(login_contraseña.getPassword()));
+                   
+                    String query = "SELECT * FROM `ingreso pacientes` WHERE Nombre='" + fc.getNombre() + "'AND contraseña= '" + fc.getContraseña() + "'";
+
+                    Statement st = cx.conectar().createStatement();
+                    ResultSet rs = st.executeQuery(query);
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(null, "Bienvenido");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usuario No encontrado");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFrm_inicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btt_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btt_registroActionPerformed
-       Registro rg = new Registro();
-       rg.setVisible(true);
-       this.setVisible(false);
+        Registro rg = new Registro();
+        rg.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btt_registroActionPerformed
 
     /**

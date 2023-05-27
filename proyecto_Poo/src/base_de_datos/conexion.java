@@ -21,7 +21,8 @@ public class conexion {
     String driver = "com.mysql.cj.jdbc.Driver";
     Connection cx;
 
-    public conexion() {
+    public conexion(String bd) {
+        this.bd = bd;
     }
 
     public Connection conectar() {
@@ -42,4 +43,5 @@ public class conexion {
             Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }    

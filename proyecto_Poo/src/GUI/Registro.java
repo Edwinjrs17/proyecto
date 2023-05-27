@@ -4,13 +4,25 @@
  */
 package GUI;
 
+import Logica.funcionario;
+import Logica.User;
+import base_de_datos.conexion;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.ResultSet;
 
 /**
  *
  * @author edwin
  */
 public class Registro extends javax.swing.JFrame {
+
+    conexion con = new conexion("proyecto_poo");
+    Connection cn = con.conectar();
 
     /**
      * Creates new form Registro
@@ -102,7 +114,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("cargo:");
 
-        fun_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medico", "Administrativo", " " }));
+        fun_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medico", "Administrativo", " " }));
         fun_cargo.setEnabled(false);
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
@@ -207,6 +219,11 @@ public class Registro extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Registrar");
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Nombre: ");
@@ -376,8 +393,37 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fun_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fun_registrarActionPerformed
-        JOptionPane.showMessageDialog(null,"Registro completo, Inicie sesion para continuar");
-        
+
+        funcionario fn = new funcionario();
+        fn.setNombre(fun_nombre.getText());
+        fn.setCelular(Integer.parseInt(fun_celular.getText()));
+        fn.setCedula(Integer.parseInt(fun_cedula.getText()));
+        fn.setFuncion(fun_cargo.getSelectedItem().toString());
+        fn.setFecha(fun_fecha.getText());
+        fn.setEmail(fun_email.getText());
+        fn.setContraseña(String.valueOf(fun_contraseña.getPassword()));
+
+        if (fn.getNombre().isEmpty() || fn.getCelular() == 0 || fn.getCedula() == 0 || fn.getFecha().isEmpty() || fn.getEmail().isEmpty() || fn.getContraseña().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
+        } else {
+            if (fn.getFuncion().equals("Seleccionar")) {
+                JOptionPane.showMessageDialog(null, "Debe selecionar un cargo");
+            } else {
+                try {
+                    String query = "INSERT INTO `ingreso funcionarios`(`nombre`, `celular`, `cedula`, `cargo`, `fecha`, `correo`, `contraseña`) VALUES ('" + fn.getNombre() + "','" + fn.getCelular() + "','" + fn.getCedula() + "','" + fn.getFuncion() + "','" + fn.getFecha() + "','" + fn.getEmail() + "','" + fn.getContraseña() + "')";
+                    PreparedStatement ps = cn.prepareStatement(query);
+                    ps.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null, "se realizo el registro exitosamente");
+                    JFrm_inicio inc = new JFrm_inicio();
+                    inc.setVisible(true);
+                    this.setVisible(false);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+
     }//GEN-LAST:event_fun_registrarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -387,7 +433,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        if(!fun_nombre.isEnabled() && !fun_celular.isEnabled() && !fun_cedula.isEnabled() && !fun_cargo.isEnabled() && !fun_fecha.isEnabled() && !fun_email.isEnabled() && !fun_contraseña.isEnabled()){
+        if (!fun_nombre.isEnabled() && !fun_celular.isEnabled() && !fun_cedula.isEnabled() && !fun_cargo.isEnabled() && !fun_fecha.isEnabled() && !fun_email.isEnabled() && !fun_contraseña.isEnabled()) {
             fun_nombre.setEnabled(true);
             fun_celular.setEnabled(true);
             fun_cedula.setEnabled(true);
@@ -395,8 +441,8 @@ public class Registro extends javax.swing.JFrame {
             fun_fecha.setEnabled(true);
             fun_email.setEnabled(true);
             fun_contraseña.setEnabled(true);
-            
-        }else{
+
+        } else {
             fun_nombre.setEnabled(false);
             fun_celular.setEnabled(false);
             fun_cedula.setEnabled(false);
@@ -404,20 +450,20 @@ public class Registro extends javax.swing.JFrame {
             fun_fecha.setEnabled(false);
             fun_email.setEnabled(false);
             fun_contraseña.setEnabled(false);
-            
+
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if(!pa_nombre.isEnabled() && !pa_celular.isEnabled() && !pa_cedula.isEnabled() && !pa_fecha.isEnabled() && !pa_email.isEnabled() && !pa_contraseña.isEnabled()){
+        if (!pa_nombre.isEnabled() && !pa_celular.isEnabled() && !pa_cedula.isEnabled() && !pa_fecha.isEnabled() && !pa_email.isEnabled() && !pa_contraseña.isEnabled()) {
             pa_nombre.setEnabled(true);
             pa_celular.setEnabled(true);
             pa_cedula.setEnabled(true);
             pa_fecha.setEnabled(true);
             pa_email.setEnabled(true);
             pa_contraseña.setEnabled(true);
-                    
-        }else{
+
+        } else {
             pa_nombre.setEnabled(false);
             pa_celular.setEnabled(false);
             pa_cedula.setEnabled(false);
@@ -426,6 +472,34 @@ public class Registro extends javax.swing.JFrame {
             pa_contraseña.setEnabled(false);
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        User us = new User();
+        us.setNombre(pa_nombre.getText());
+        us.setCelular(Integer.parseInt(pa_celular.getText()));
+        us.setCedula(Integer.parseInt(pa_cedula.getText()));
+        us.setCumpleaños(pa_fecha.getText());
+        us.setEmail(pa_email.getText());
+        us.setContraseña(String.valueOf(pa_contraseña.getPassword()));
+
+        if (us.getNombre().isEmpty() && us.getCelular() == 0 && us.getCedula() == 0 && us.getCumpleaños().isEmpty() && us.getEmail().isEmpty() && us.getContraseña().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "por favor llene todos los campos");
+        } else {
+            try {
+                String query = "INSERT INTO `ingreso pacientes`(`Nombre`, `celular`, `cedula`, `fecha`, `correo`, `contraseña`) VALUES ('" + us.getNombre() + "','" + us.getCelular() + "','" + us.getCedula() + "','" + us.getCumpleaños() + "','" + us.getEmail() + "','" + us.getContraseña() + "')";
+                PreparedStatement ps = cn.prepareStatement(query);
+                ps.executeUpdate(query);
+                JOptionPane.showMessageDialog(null, "se realizo el registro exitosamente");
+                JFrm_inicio inc = new JFrm_inicio();
+                inc.setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
