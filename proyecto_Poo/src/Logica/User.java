@@ -20,7 +20,7 @@ public class User {
    
     private String cumpleaños;
     private String email;
-    private String contraseña;
+    private String control;
 
     public String getNombre() {
         return nombre;
@@ -71,25 +71,25 @@ public class User {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getControl() {
+        return control;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContraseña(String control) {
+        this.control = control;
     }
 
     public User() {
     }
 
-    public User(String nombre,int cedula, int celular,String direccion, String cumpleaños, String email, String contraseña ) {
+    public User(String nombre,int cedula, int celular,String direccion, String cumpleaños, String email, String control ) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.celular = celular;
         this.direccion = direccion;
         this.cumpleaños = cumpleaños;
         this.email = email;
-        this.contraseña = contraseña;
+        this.control = control;
 
     }
     

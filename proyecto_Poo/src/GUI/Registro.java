@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.ResultSet;
+
 
 /**
  *
@@ -29,6 +29,7 @@ public class Registro extends javax.swing.JFrame {
      */
     public Registro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -59,20 +60,7 @@ public class Registro extends javax.swing.JFrame {
         fun_contraseña = new javax.swing.JPasswordField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        pa_nombre = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        pa_celular = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        pa_cedula = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        pa_fecha = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        pa_email = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        pa_contraseña = new javax.swing.JPasswordField();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
@@ -114,7 +102,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("cargo:");
 
-        fun_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medico", "Administrativo", " " }));
+        fun_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Medico", "Administrativo", "Usuario" }));
         fun_cargo.setEnabled(false);
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
@@ -137,7 +125,7 @@ public class Registro extends javax.swing.JFrame {
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(204, 0, 0));
-        jRadioButton1.setText("Funcionario");
+        jRadioButton1.setText("Registro");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -215,125 +203,24 @@ public class Registro extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Registrar");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Nombre: ");
-
-        pa_nombre.setEnabled(false);
-
-        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("celular: ");
-
-        pa_celular.setEnabled(false);
-
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("cedula:");
-
-        pa_cedula.setEnabled(false);
-
-        jLabel13.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Fecha de nacimiento:");
-
-        pa_fecha.setEnabled(false);
-
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Correo Electronico:");
-
-        pa_email.setEnabled(false);
-
-        jLabel15.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Contraseña:");
-
-        pa_contraseña.setEnabled(false);
-
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(204, 0, 0));
-        jRadioButton2.setText("Paciente");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes_iconos/Fondo_mediHelp_regisro.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pa_celular)
-                            .addComponent(pa_cedula)
-                            .addComponent(pa_fecha)
-                            .addComponent(pa_email)
-                            .addComponent(jLabel12)
-                            .addComponent(pa_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(pa_contraseña))))
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jRadioButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jRadioButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pa_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pa_celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pa_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pa_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pa_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pa_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes_iconos/persona.png"))); // NOI18N
         jLabel16.setText("Registro de Usuarios.");
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
@@ -357,12 +244,14 @@ public class Registro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(641, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +262,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -454,53 +343,6 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        if (!pa_nombre.isEnabled() && !pa_celular.isEnabled() && !pa_cedula.isEnabled() && !pa_fecha.isEnabled() && !pa_email.isEnabled() && !pa_contraseña.isEnabled()) {
-            pa_nombre.setEnabled(true);
-            pa_celular.setEnabled(true);
-            pa_cedula.setEnabled(true);
-            pa_fecha.setEnabled(true);
-            pa_email.setEnabled(true);
-            pa_contraseña.setEnabled(true);
-
-        } else {
-            pa_nombre.setEnabled(false);
-            pa_celular.setEnabled(false);
-            pa_cedula.setEnabled(false);
-            pa_fecha.setEnabled(false);
-            pa_email.setEnabled(false);
-            pa_contraseña.setEnabled(false);
-        }
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        User us = new User();
-        us.setNombre(pa_nombre.getText());
-        us.setCelular(Integer.parseInt(pa_celular.getText()));
-        us.setCedula(Integer.parseInt(pa_cedula.getText()));
-        us.setCumpleaños(pa_fecha.getText());
-        us.setEmail(pa_email.getText());
-        us.setContraseña(String.valueOf(pa_contraseña.getPassword()));
-
-        if (us.getNombre().isEmpty() && us.getCelular() == 0 && us.getCedula() == 0 && us.getCumpleaños().isEmpty() && us.getEmail().isEmpty() && us.getContraseña().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "por favor llene todos los campos");
-        } else {
-            try {
-                String query = "INSERT INTO `ingreso pacientes`(`Nombre`, `celular`, `cedula`, `fecha`, `correo`, `contraseña`) VALUES ('" + us.getNombre() + "','" + us.getCelular() + "','" + us.getCedula() + "','" + us.getCumpleaños() + "','" + us.getEmail() + "','" + us.getContraseña() + "')";
-                PreparedStatement ps = cn.prepareStatement(query);
-                ps.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "se realizo el registro exitosamente");
-                JFrm_inicio inc = new JFrm_inicio();
-                inc.setVisible(true);
-                this.setVisible(false);
-            } catch (SQLException ex) {
-                Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -545,17 +387,11 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField fun_fecha;
     private javax.swing.JTextField fun_nombre;
     private javax.swing.JButton fun_registrar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -565,12 +401,5 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField pa_cedula;
-    private javax.swing.JTextField pa_celular;
-    private javax.swing.JPasswordField pa_contraseña;
-    private javax.swing.JTextField pa_email;
-    private javax.swing.JTextField pa_fecha;
-    private javax.swing.JTextField pa_nombre;
     // End of variables declaration//GEN-END:variables
 }

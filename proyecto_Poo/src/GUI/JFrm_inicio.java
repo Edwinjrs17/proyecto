@@ -27,6 +27,7 @@ public class JFrm_inicio extends javax.swing.JFrame {
      */
     public JFrm_inicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cx = new conexion("proyecto_poo");
     }
 
@@ -48,14 +49,14 @@ public class JFrm_inicio extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btt_registro = new javax.swing.JButton();
-        RB_funcionario = new javax.swing.JRadioButton();
-        RB_paciente = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 255));
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,14 +92,6 @@ public class JFrm_inicio extends javax.swing.JFrame {
             }
         });
 
-        RB_funcionario.setBackground(new java.awt.Color(255, 255, 255));
-        RB_funcionario.setForeground(new java.awt.Color(0, 0, 0));
-        RB_funcionario.setText("Funcionario");
-
-        RB_paciente.setBackground(new java.awt.Color(255, 255, 255));
-        RB_paciente.setForeground(new java.awt.Color(0, 0, 0));
-        RB_paciente.setText("Paciente");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,13 +112,9 @@ public class JFrm_inicio extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(RB_funcionario))
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(RB_paciente)
-                                            .addComponent(btt_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btt_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 5, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -142,39 +131,24 @@ public class JFrm_inicio extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(login_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RB_funcionario)
-                    .addComponent(RB_paciente))
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btt_registro, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(366, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 12, -1, 348));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes_iconos/portada_principal.png"))); // NOI18N
+        jLabel4.setText("\n");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,8 +159,7 @@ public class JFrm_inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (RB_funcionario.isSelected()) {
-            try {
+        try {
                 
                 fc.setNombre(login_usuario.getText());
                 fc.setContraseña(String.valueOf(login_contraseña.getPassword()));
@@ -196,34 +169,15 @@ public class JFrm_inicio extends javax.swing.JFrame {
                 Statement st = cx.conectar().createStatement();
                 ResultSet rs = st.executeQuery(query);
                 if (rs.next()) {
-                    JOptionPane.showMessageDialog(null, "Bienvenido");
+                    Interfaz_medico md = new Interfaz_medico();
+                    md.setVisible(true);
+                    this.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario No encontrado");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(JFrm_inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        } else {
-            if (RB_paciente.isSelected()) {
-                try {
-                   fc.setNombre(login_usuario.getText());
-                   fc.setContraseña(String.valueOf(login_contraseña.getPassword()));
-                   
-                    String query = "SELECT * FROM `ingreso pacientes` WHERE Nombre='" + fc.getNombre() + "'AND contraseña= '" + fc.getContraseña() + "'";
-
-                    Statement st = cx.conectar().createStatement();
-                    ResultSet rs = st.executeQuery(query);
-                    if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Bienvenido");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Usuario No encontrado");
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(JFrm_inicio.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btt_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btt_registroActionPerformed
@@ -243,7 +197,7 @@ public class JFrm_inicio extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -268,13 +222,12 @@ public class JFrm_inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton RB_funcionario;
-    private javax.swing.JRadioButton RB_paciente;
     private javax.swing.JButton btt_registro;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField login_contraseña;
